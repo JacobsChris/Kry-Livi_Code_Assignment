@@ -1,4 +1,4 @@
-package persistence.domain;
+package kry.persistence.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

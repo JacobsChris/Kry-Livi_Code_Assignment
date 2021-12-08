@@ -1,8 +1,8 @@
-package rest;
+package kry.rest;
 
-import WebService.WebServiceService;
+import kry.WebService.WebServiceService;
 import org.springframework.web.bind.annotation.*;
-import persistence.domain.WebService;
+import kry.persistence.domain.WebService;
 
 import java.util.List;
 

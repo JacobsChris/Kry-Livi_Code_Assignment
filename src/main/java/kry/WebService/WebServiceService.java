@@ -1,9 +1,9 @@
-package WebService;
+package kry.WebService;
 
-import WebServiceExceptions.WebServiceNotFoundException;
+import kry.WebServiceExceptions.WebServiceNotFoundException;
 import org.springframework.stereotype.Service;
-import persistence.domain.WebService;
-import persistence.repo.WebServiceRepo;
+import kry.persistence.domain.WebService;
+import kry.persistence.repo.WebServiceRepo;
 
 import java.util.List;
 

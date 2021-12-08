@@ -1,4 +1,4 @@
-package WebServiceExceptions;
+package kry.WebServiceExceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

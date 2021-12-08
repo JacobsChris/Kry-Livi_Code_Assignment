@@ -78,7 +78,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>WebServiceCheckerApplication</mainClass>
+                            <mainClass>kry.WebServiceCheckerApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
