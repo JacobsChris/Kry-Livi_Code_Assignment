@@ -1,10 +1,13 @@
 package kry.WebService;
 
 import kry.WebServiceExceptions.WebServiceNotFoundException;
-import org.springframework.stereotype.Service;
 import kry.persistence.domain.WebService;
 import kry.persistence.repo.WebServiceRepo;
+import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 @Service
@@ -16,9 +19,33 @@ public class WebServiceService {
         this.webServiceRepo = webServiceRepo;
     }
 
-    public List<WebService> getAllServices() {return webServiceRepo.findAll();}
+    public List<WebService> getAllServices() {
+        List<WebService> allServices = webServiceRepo.findAll();
+        for (WebService service : allServices) {
+            // poll each service
+            checkStatusOfWebService(service);
+        }
 
-    public WebService addNewWebService(WebService service){
+        return webServiceRepo.findAll();
+    }
+
+    private void checkStatusOfWebService(WebService service) {
+        HttpURLConnection con = null;
+        try {
+            URL url = new URL(service.getUrl());
+            con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            int status = con.getResponseCode();
+            service.setStatus(status);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            assert con != null;
+            con.disconnect();
+        }
+    }
+
+    public WebService addNewWebService(WebService service) {
         // TODO: handle constraints
         return webServiceRepo.save(service);
     }
