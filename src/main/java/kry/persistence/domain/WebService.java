@@ -1,6 +1,9 @@
 package kry.persistence.domain;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
@@ -18,6 +21,7 @@ public class WebService {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @URL(protocol = "", host = "")
     @NotNull
     @Column(name = "url", unique = true)
     private String url;
@@ -25,11 +29,11 @@ public class WebService {
     @Column(name = "status")
     private Integer status;
 
+    @NotBlank
     @NotNull
     @Column(name = "siteName", unique = true)
     private String siteName;
 
-    @Convert(disableConversion = true)
     @Column(name = "creation_time", nullable = false)
     private Instant creationTime;
 
@@ -45,10 +49,6 @@ public class WebService {
 
     public Instant getCreationTime() {
         return creationTime;
-    }
-
-    public void setCreationTime(Instant creationTime) {
-        this.creationTime = creationTime;
     }
 
     public String getSiteName() {
