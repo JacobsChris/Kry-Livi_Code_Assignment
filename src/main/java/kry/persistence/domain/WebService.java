@@ -5,9 +5,13 @@ import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"id","url","siteName"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "url", "siteName"})})
 
 public class WebService {
+    /*
+    To make it so users only see services they add, add extra column with the user token in it + set up some amount of auth
+    Then send a token with every request and only return rows that have matching token
+     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
